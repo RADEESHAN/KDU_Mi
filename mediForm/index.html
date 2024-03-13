@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data enetr</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assests/fontawesome/fontawesome-free-5.15.3-web/css/all.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</head>
+
+
+
+    <!-- //////////////// Response Alert //////////////////// -->
+    <div class="row mt-3">
+        <div class="col-sm-8 mx-auto text-center">
+            <?php if ($status == "1") { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 style="color: green;"><?php echo $response; ?></h3>
+                </div>
+            <?php } else if ($status == "0") { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 style="color: red;"><?php echo $response; ?></h3>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+    <!-- //////////////// Response Alert End //////////////////// -->
+
+ 
+  <div class="card-header">
+   <h1 class="text-center">Enter your details for Apply Medical.</h1>
+  </div>
+  <div class="card-body">
+    <h2 class"text-center"><?php echo $response; ?></h2>
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <p class="text-danger">* required fields </p>
+                    </div>
+                    <form id="medi_upload_form" enctype="multipart/form-data" method="POST" action="medi_upload_controller.php?type=addmedical"><!--user controller wala case eke thiyen type eka-->
+                    <!--farmer email and farmer id-->
+                        <div class="row mt-3">
+                            <div class="col-sm-2 text-muted">
+                                <label for="" class="control-label">Email <i class="text-danger">*</i></label>
+                            </div>
+                            <div class="col-sm-4 text-muted">
+                                <input type="email" name="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="col-sm-2 text-muted">
+                                <label for="" class="control-label"> Register Number <i class="text-danger">*</i></label>
+                            </div>
+                            <div class="col-sm-4 text-muted">
+                                <input type="text" name="regno" id="regno" class="form-control" required onblur="getUserData()">
+                            </div>
+                        
+                        </div>
+
+
+
+
+                        <!--fname and lname-->
+                        <div class="row mt-3">
+                            <div class="col-sm-2 text-muted">
+                                <label for="" class="control-label">Full Name <i class="text-danger">*</i></label>
+                            </div>
+                            <div class="col-sm-4 text-muted">
+                                <input type="text" name="firstname" id="firstname" class="form-control" required>
+                            </div>
+                            <div class="col-sm-2 text-muted">
+                            <label for="intakeSelect" class="control-label">Intake <i class="text-danger">*</i></label>
+                        </div>
+                        <div class="col-sm-4 text-muted">
+                            <select name="intake" id="intakeSelect" class="form-control" required>
+                                <option value="intake39">Intake 39</option>
+                                <option value="intake38">Intake 38</option>
+                                <option value="intake37">Intake 37</option>
+                                <option value="intake40">Intake 40</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                        </div>
+
+
+
+                        <!--contact number-->
+                        <div class="row mt-3">
+                            <div class="col-sm-2 text-muted">
+                                <label for="" class="control-label">Contact Number <i class="text-danger">*</i>
+                                </label>
+                            </div>
+                            <div class="col-sm-4 text-muted">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">0</span>
+                                    </div>
+                                    <input type="number" name="phonenumber" id="phonenumber" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 text-muted">
+                            <label for="deptSelect" class="control-label">Department <i class="text-danger">*</i></label>
+                            </div>
+                            <div class="col-sm-4 text-muted">
+                            <select name="dept" id="deptSelect" class="form-control" required>
+                            <option value="IT">IT</option>
+                            <option value="department2">QS</option>
+                            <option value="servay">servay</option>
+                            <option value="Archi">Archi</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                        </div>
+
+
+                        <h5 >Absent Time period</h5>
+                            <div class="row">
+                            <div class="col">
+                            <label for="">Start date</label>
+                                <input id= "sdate" name="sdate" type="date" class="form-control" required>
+                            </div>
+                            <div class="col">
+                            <label for="">End date</label>
+                                <input name="edate" type="date" class="form-control" required>
+                            </div>
+                            </div>
+
+
+                            <div class="row mt-3">
+                            <div class="col-sm-6 text-muted">
+                                <label for="">Submit date</label>
+                                <input name="subdate" type="date" class="form-control" required>
+                                </div>
+                            <div class="col-sm-6 text-muted">
+                                <label for="" class="control-label">Miss Lectures <i class="text-danger">*</i></label>
+                                <div class="col">
+                                 <textarea class="form-control" name="missLec" id="missLec" rows="2" required></textarea>
+                                </div>
+                             </div>
+
+                        
+                             </div>
+
+
+
+                        <div class="row mt-3">
+                            <div class="col-sm-2 text-muted">
+                                <label for="" class="control-label">Medical File</label>
+                            </div>
+                            <div class="col-sm-4 text-muted">
+                                <input type="file" name="uimg" id="uimg" class="form-control-file" onchange="readURL(this);">
+                                <!-- Image Preview -->
+                                <div>
+                                    <img id="prev_img" alt="">
+                                </div>
+                                <!-- Preview End -->
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-sm-4 text-muted">
+                                <button id="submit" type="submit" class="btn btn-block button text-white text-uppercase btn btn-primary"><i class="fad fa-save"></i>&nbsp; &nbsp; Upload</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>

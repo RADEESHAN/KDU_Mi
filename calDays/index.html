@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workdays Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="checkbox"] {
+            margin-left: 5px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Workdays Calculator</h2>
+        <form id="workdays-form">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" required>
+
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" required>
+
+            <label for="work-sat">Include Saturdays:</label>
+            <input type="checkbox" id="work-sat" checked>
+
+            <label for="patron-date">Patron Saint Day (MM-DD):</label>
+            <input type="text" id="patron-date" placeholder="Optional (MM-DD)">
+
+            <button type="button" onclick="calculateWorkdays()">Calculate</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateWorkdays() {
+            const startDate = document.getElementById("start-date").value;
+            const endDate = document.getElementById("end-date").value;
+            const workSat = document.getElementById("work-sat").checked;
+            const patronDate = document.getElementById("patron-date").value;
+
+            // You can send the form values to your PHP script using AJAX and then display the result here.
+            // Here's a basic example using fetch:
+
+            fetch('your_php_script.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    startDate,
+                    endDate,
+                    workSat,
+                    patronDate
+                })
+            })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById("result").textContent = `Working days: ${result}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+    <script>
+        function calculateWorkdays() {
+            const startDate = document.getElementById("start-date").value;
+            const endDate = document.getElementById("end-date").value;
+            const workSat = document.getElementById("work-sat").checked;
+            const patronDate = document.getElementById("patron-date").value;
+    
+            // Send the form data to the PHP script
+            fetch('workdays_calculator.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `startDate=${startDate}&endDate=${endDate}&workSat=${workSat}&patronDate=${patronDate}`,
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultElement = document.getElementById("result");
+                if (data.workdays !== undefined) {
+                    resultElement.textContent = `Working days: ${data.workdays}`;
+                } else {
+                    resultElement.textContent = "Error calculating workdays.";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

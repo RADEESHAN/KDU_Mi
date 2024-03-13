@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Your Website</title>
+    <style>
+        /* Custom CSS for the navigation bar */
+        .navbar {
+            background-color: #0a0438;
+        }
+
+        .navbar-brand img {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 15px;
+        }
+
+        .navbar-nav .nav-item:last-child {
+            margin-right: 0;
+        }
+
+        .navbar-light .navbar-toggler-icon {
+            background-color: #fff;
+        }
+
+        .user-icon i {
+            margin-right: 5px;
+            color: white; /* Change user icon color to white */
+        }
+
+        .navbar-nav.mr-auto {
+            margin-left: auto;
+        }
+
+        /* Custom CSS for button styles */
+        .navbar-nav .nav-item .nav-link {
+            color: white;
+            border-radius: 50px; /* Oval shape */
+            padding: 10px 20px; /* Adjust padding as needed */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            background-color: #8BC34A; /* Light green on hover */
+        }
+
+        /* Custom CSS for "Hi! Student" text */
+        .user-icon .student-text {
+            color: white; /* Change text color to white */
+        }
+
+        /* Custom CSS for the log out button */
+        .logout-button {
+            color: white; /* Change text color to white */
+            background-color: #d9534f; /* Change button color */
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px; /* Adjust padding as needed */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .logout-button:hover {
+            background-color: #c9302c; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="kdu-logo2.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                
+            </ul>
+           <ul class="navbar-nav">
+    <li class="nav-item user-icon">
+        <i class="fas fa-user fa-lg"></i>
+        <span class="student-text">Hi! AR officer.</span>
+    </li>
+    <li class="nav-item">
+        <a class="btn logout-button" href="logout.php">Log Out</a> <!-- Change to anchor tag -->
+    </li>
+</ul>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Include Bootstrap and jQuery scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
